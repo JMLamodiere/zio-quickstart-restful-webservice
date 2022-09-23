@@ -22,4 +22,8 @@ object GreetingApp:
       // GET /greet/:name
       case Method.GET -> !! / "greet" / name =>
         Response.text(s"Hello $name!")
+
+      // GET /stats
+      case req @ Method.GET -> !! / "useragent" =>
+        Response.text(s"User-Agent: ${req.headerValue("User-Agent").getOrElse("Unknown")}")
     }
